@@ -1,0 +1,185 @@
+body{
+    margin: 0;
+     padding:0;
+    
+    background-color:rgba(209, 78, 35, 0.747)!important;
+}
+.first{
+     background-color: white;
+      padding:20px 20px;
+     height:400px;
+      margin-left: 450px;
+      margin-top: 150px;
+     width: 35%;
+     border-radius: 10px;
+}
+h1{
+     font-size: 20px !important;
+     font-family: 'Dosis',sans-serif;
+     font-weight: 500;
+}
+.form-check{ 
+    color:black;
+    margin: 10px 10px 10px 10px ;
+    font-size: 20px !important;
+    font-family: "Dosis",sans-serif;
+    font-weight: 500;
+    
+}
+.form-check-inputs[type=radio] {
+    border-radius: 50%;
+}
+.col-form-label {
+     color:black;
+     font-size:20px!important;
+     font-family: 'Dosis',sans-serif;
+     font-weight: 500;
+     white-space: nowrap;
+}
+.form-control{
+     width: 200px!important;
+     margin-left: 120px!important;
+}
+.form-check-input{ 
+    margin-left: 65px!important;
+}
+.button{
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    border: none!important;
+    background-color: #4b1d3f!important;
+    color:white !important;
+    font-size: 20px!important;
+    font-family: 'Dosis',sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+   margin: 0 40px;
+    transition: transform 0.2s ease; 
+}
+button:hover {
+    background-color:#d14e23;
+    cursor: pointer;
+  }
+  
+button:active {
+    transform: scale(0.95); 
+  }
+
+  .transaction {
+    width: 400px;
+    background-color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 220px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.heading h1 {
+    margin: 0;
+    font-family: 'Dosis', sans-serif;
+}
+
+
+.input-group {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.form-trans {
+    font-size: 20px;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 500;
+    margin-right: 10px;
+    white-space: nowrap; 
+}
+
+.trans {
+    width: 200px; 
+    height: 30px;
+    flex-grow: 1;
+    background-color: white;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+
+.button-group {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    margin: 5px 0;
+      padding: 5px;
+      width:120px;
+      height: 30px;
+      color: white;
+      background-color: #4b1d3f;
+      border-radius: 10px;
+      border: none;
+      font-size: 20px;
+      font-family: 'Dosis',sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.2s ease; 
+      margin: 0 5px;
+   }
+   
+   button:hover {
+   background-color:#d14e23;
+   cursor: pointer;
+   }
+   
+   button:active {
+   transform: scale(0.95); 
+   }
+   /*Bread scrumbs*/
+   .content .breadcrumbs {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  .breadcrumbs li {
+    display: inline;
+    margin-right: 5px;
+  }
+  .breadcrumbs li a{ 
+    color:black;
+    font-size: 20px;
+    font-family: 'Dosis',sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .breadcrumbs li::after {
+    content: ">"; 
+    margin-left: 5px;
+    margin-right: 5px;
+    color:black; 
+  }
+  .breadcrumbs li:last-child::after {
+    content: none; /* Hide the separator after the last breadcrumb */
+  }
+  .breadcrumbs li.active a {
+    text-decoration: underline; /* Style for active breadcrumb */
+  }
+/*Receipt*/
+.printer{
+   margin-left: -100px;
+   margin-top: 20px;
+}
+.receipt{
+   margin-left: 10px;
+}

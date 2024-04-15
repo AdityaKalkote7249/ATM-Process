@@ -1,0 +1,103 @@
+<?php
+session_start();
+
+header('Content-Type: application/json'); // Set JSON header for all responses
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['user'])) {
+    // ... [Your existing PHP code for connecting to the database]
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "atm_process";
+
+    $conn = new mysqli($servername, $username, $password, $database);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    function calculateDenominations($amount, $user) {
+        $denominations = [500, 200, 100];
+        $desiredNotes = [500 => 10, 200 => 10, 100 => 10];
+        $result = [];
+
+        foreach ($denominations as $value) {
+            $maxAvailableNotes = $user[$value . '_currency'];
+            $desiredCount = $desiredNotes[$value];
+
+            $requiredNotes = intdiv($amount, $value);
+            $useNotes = min($requiredNotes, $maxAvailableNotes, $desiredCount);
+            $result[$value] = $useNotes;
+
+            $amount -= $useNotes * $value;
+
+            if ($amount == 0) break;
+        }
+
+        if ($amount > 0) {
+            foreach ($denominations as $value) {
+                if ($amount >= $value) {
+                    $requiredNotes = intdiv($amount, $value);
+                    $availableNotes = $user[$value . '_currency'] - $result[$value];
+                    $useNotes = min($requiredNotes, $availableNotes);
+
+                    $result[$value] += $useNotes;
+                    $amount -= $useNotes * $value;
+                    if ($amount == 0) break;
+                }
+            }
+        }
+
+        return $amount > 0 ? null : $result;
+    }
+
+    // Check for valid amount
+    $amount = isset($_POST['amount']) ? (int)$_POST['amount'] : 0;
+    if ($amount <= 0) {
+        echo "Invalid amount.";
+        $conn->close();
+        exit;
+    }
+
+    // Check for sufficient funds
+    $user = $_SESSION['user'];
+    if ($user['balance'] < $amount) {
+        echo "Insufficient funds.";
+        $conn->close();
+        exit;
+    }
+
+    // Check for denominations
+    $denominationsUsed = calculateDenominations($amount, $user);
+    if ($denominationsUsed === null) {
+        echo "Insufficient denominations available.";
+        $conn->close();
+        exit;
+    }
+
+    // Proceed with updating the database
+    $newBalance = $user['balance'] - $amount;
+    $new100Currency = $user['100_currency'] - $denominationsUsed[100];
+    $new200Currency = $user['200_currency'] - $denominationsUsed[200];
+    $new500Currency = $user['500_currency'] - $denominationsUsed[500];
+
+    $conn->begin_transaction();
+
+    $stmt = $conn->prepare("UPDATE user_details SET balance = ?, 100_currency = ?, 200_currency = ?, 500_currency = ? WHERE card_number = ?");
+    $stmt->bind_param("iiiis", $newBalance, $new100Currency, $new200Currency, $new500Currency, $user['card_number']);
+    $stmt->execute();
+    $stmt->close();
+
+    $conn->commit();
+    // ... [Your existing PHP code for handling the transaction]
+
+    // On success
+    echo json_encode(["success" => true, "message" => "Transaction successful."]);
+    $conn->close();
+    exit;
+} else {
+    // Return unauthorized access error as JSON
+    echo json_encode(["error" => true, "message" => "Unauthorized access."]);
+    exit;
+}
+?>

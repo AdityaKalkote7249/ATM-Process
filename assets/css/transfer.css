@@ -1,0 +1,66 @@
+body{
+     margin:0px;
+     padding:0px;
+     background-color:rgba(209, 78, 35, 0.747);;
+}
+.transfer{
+    background-color: white;
+    padding: 20px;
+   height: 230px;
+    margin-left: 450px;
+    margin-top: 200px;
+    width: 30%;
+    border-radius: 10px;
+}
+label{
+    color: black;
+    font-size: 20px;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 500;
+    margin-right: 10px;
+}
+input{
+    background-color: #fff;
+    width: 150px;
+    height: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.row {
+    display: flex;
+    align-items: center; 
+    margin: 0px;
+    padding: 10px;
+    justify-content: start;
+    flex-wrap: nowrap;
+}
+.checkbox{
+     width: 15px;
+     height: 15px;
+     border-radius: 10px;
+}
+.buttons {
+    display: flex;
+    justify-content: start; 
+    flex-wrap: nowrap; 
+    margin-top: 20px;
+    padding: 0; 
+    margin-left: 80px;
+}
+
+button {
+    height: 40px;
+    border-radius: 10px;
+    border: none!important;
+    background-color: #4b1d3f!important;
+    color: white !important;
+    font-size: 20px!important;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    margin: 0 10px; 
+    transition: transform 0.2s ease;
+    padding: 10px;
+    display: inline-block;
+}

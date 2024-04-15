@@ -1,0 +1,111 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(209, 78, 35, 0.747);
+}
+
+.content {
+    width: 550px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Adds space between the button rows */
+}
+
+.button-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px; /* Adjust padding as needed */
+    width:180px;
+    height: 70px;
+    font-size: 1em; /* Adjust font size as needed */
+    cursor: pointer; /* Changes cursor to pointer on hover over the buttons */
+    border-radius: 5px; /* Optional: Adds rounded corners to buttons */
+    color: white;
+   background-color: rgb(49, 48, 48);
+   border-radius: 10px;
+   border: none;
+   font-size: 20px;
+   font-family: 'Dosis',sans-serif;
+   font-weight: 500;
+   cursor: pointer;
+   transition: transform 0.2s ease; 
+   margin: 0 5px;
+}
+button:hover {
+    background-color:black;
+    cursor: pointer;
+    }
+    
+    button:active {
+    transform: scale(0.95); 
+    }
+.cancel{
+    padding: 10px 20px; /* Adjust padding as needed */
+    width:180px;
+    height: 50px;
+    font-size: 1em; /* Adjust font size as needed */
+    cursor: pointer; /* Changes cursor to pointer on hover over the buttons */
+    border-radius: 5px; /* Optional: Adds rounded corners to buttons */
+    color: white;
+   background-color: rgb(49, 48, 48);
+   border-radius: 10px;
+   border: none;
+   font-size: 20px;
+   font-family: 'Dosis',sans-serif;
+   font-weight: 500;
+   cursor: pointer;
+   transition: transform 0.2s ease; 
+   margin: 0 5px;
+}
+/*Breadscrumb*/
+.content .breadcrumbs {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  .breadcrumbs li {
+    display: inline;
+    margin-right: 5px;
+  }
+  .breadcrumbs li a{ 
+    color:black;
+    font-size: 20px;
+    font-family: 'Dosis',sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .breadcrumbs li::after {
+    content: ">"; 
+    margin-left: 5px;
+    margin-right: 5px;
+    color:black; 
+  }
+  .breadcrumbs li:last-child::after {
+    content: none; /* Hide the separator after the last breadcrumb */
+  }
+  .breadcrumbs li.active a {
+    text-decoration: underline; /* Style for active breadcrumb */
+  }
+.services{
+     padding:10px;
+    
+}
+.sb{
+     margin-left: 80px;
+     
+}
