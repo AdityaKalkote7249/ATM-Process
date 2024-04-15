@@ -1,2 +1,2 @@
 # ATM-Process
-Internal working ATM software
+Internal working of ATM software
